@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+	<title>K19 Treinamentos</title>
+</h:head>
+
+<h:body>
+	<h1>Cadastro de Funcionário</h1>
+	<h:form>
+		<h:panelGrid columns="3">
+			<h:outputLabel value="Salário:R$" for="campo-salario " />
+			<h:inputText id="campo-salario"
+				value="#{funcionarioBean.funcionario.salario}">
+				<f:convertNumber locale=" pt_BR " />
+			</h:inputText>
+			<h:message for="campo-salario" />
+
+			<h:outputLabel value="Código:" for="campo-codigo" />
+			<h:inputText id="campo-codigo"
+				value="#{funcionarioBean.funcionario.codigo}" />
+			<h:message for="campo-codigo" />
+
+			<h:outputLabel value="Data:" for="campo-aniversario" />
+			<h:inputText id="campo-aniversario "
+				value="#{funcionarioBean.funcionario.aniversario}">
+				<f:convertDateTime pattern="dd/MM/ yyyy" />
+			</h:inputText>
+			<h:message for="campo-aniversario" />
+
+			<h:commandButton value="Cadastrar" />
+		</h:panelGrid>
+		<h:messages />
+	</h:form>
+
+</h:body>
+</html>

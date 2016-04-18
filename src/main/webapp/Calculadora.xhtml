@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+	<title>Calculadora</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:messages showDetail="true" showSumary="true" />
+		<h:outputText value="Seu nome" for="seuNome" />
+		<h:inputText size="12" value="#{calculadoraDataBean.nome}"
+			id="seuNome" label="Seu nome" required="true">
+			<f:validateLength minimum="3" maximum="15" />
+
+		</h:inputText>
+		<br/>
+
+		<h:inputText size="12" value="#{calculadoraDataBean.dataBase}"
+		converter="smartDate"
+			label="Data base">
+			<f:validator validatorId="diaUtil" />
+		</h:inputText>
+			+
+			<h:inputText size="12" value="#{calculadoraDataBean.dias}"
+			required="true" label="Dias">
+			<f:convertNumber />
+		</h:inputText>
+			=
+			<h:outputText value="#{calculadoraDataBean.resultado}">
+			<f:convertDateTime dateStyle="full" locale="pt_BR" />
+			</h:outputText>
+		<br />
+		<h:panelGroup rendered="#{calculadoraDataBean.resultado != null}">
+			<h:outputText value="#{calculadoraDataBean.nome}, o resultado é " />
+			<h:outputText value="#{calculadoraDataBean.resultado}" />
+		</h:panelGroup>
+		<h:commandButton value="adicionar"
+			action="#{calculadoraDataBean.adicionar}" />
+
+	</h:form>
+
+</h:body>
+
+</html>
